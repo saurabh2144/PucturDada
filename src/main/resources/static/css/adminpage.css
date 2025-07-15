@@ -1,0 +1,122 @@
+/* Container spacing */
+.container {
+    max-width: 900px;
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+/* Page Heading */
+h2, h4 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Input fields */
+input.form-control {
+    border-radius: 6px;
+    border: 1.5px solid #ced4da;
+    padding: 10px 12px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Tables */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+thead.table-dark {
+    background-color: #343a40 !important;
+    color: #fff;
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: #f1f7fc;
+    cursor: default;
+}
+
+/* Message alerts */
+.alert-info {
+    font-size: 16px;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* JSON output box (if you still use it) */
+.json-output {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: monospace, monospace;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    input.form-control, button {
+        font-size: 14px;
+    }
+}

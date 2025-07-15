@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Mechanics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminpage.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="mb-4">Admin Dashboard</h2>
+    <div th:if="${message}" class="alert alert-info" role="alert" th:text="${message}"></div>
+
+    <button id="fetchAvailableBtn" class="btn btn-primary mb-3">Show Available Mechanics</button>
+
+    <div id="availableMechanicsTable" style="display:none; margin-top: 20px;">
+        <h4>Available Mechanics List</h4>
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Photo</th> <!-- Photo with download on click -->
+                </tr>
+            </thead>
+            <tbody id="availableMechanicsBody"></tbody>
+        </table>
+    </div>
+
+    <button id="fetchAllBtn" class="btn btn-secondary mb-3">Show All Mechanics</button>
+
+    <div id="allMechanicsTable" style="display:none; margin-top: 20px;">
+        <h4>All Mechanics List</h4>
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Photo</th> <!-- Photo with download on click -->
+                </tr>
+            </thead>
+            <tbody id="mechanicsTableBody"></tbody>
+        </table>
+    </div>
+
+    <form id="searchForm" class="mb-3" style="width:37%;">
+        <div class="input-group">
+            <input type="number" class="form-control" name="id" placeholder="Enter Mechanic ID" required>
+            <button type="submit" class="btn btn-outline-secondary">Search by ID</button>
+        </div>
+    </form>
+
+    <form action="/delete" method="post" class="mb-3" style="width:37%;">
+        <div class="input-group">
+            <input type="text" class="form-control" name="name" placeholder="Enter Mechanic Name to Delete" required>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+    </form>
+
+    <div id="searchResult"></div>
+
+</div>
+
+<script>
+const fetchAllBtn = document.getElementById("fetchAllBtn");
+const allTableDiv = document.getElementById("allMechanicsTable");
+const allTbody = document.getElementById("mechanicsTableBody");
+
+fetchAllBtn.addEventListener("click", () => {
+    if (allTableDiv.style.display === "none") {
+        fetch("/getMechanics")
+        .then(res => res.json())
+        .then(data => {
+            allTbody.innerHTML = "";
+            data.forEach(m => {
+                let imgSrc = 'data:image/jpeg;base64,' + m.photoBase64;
+                allTbody.innerHTML += `
+                    <tr>
+                        <td>${m.id}</td>
+                        <td>${m.name}</td>
+                        <td>${m.phone}</td>
+                        <td>${m.status}</td>
+                        <td>
+                            <a href="${imgSrc}" download="mechanic_${m.id}.jpg">
+                                <img src="${imgSrc}" alt="Photo" style="width: 80px; height: auto; cursor: pointer;" />
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            });
+            allTableDiv.style.display = "block";
+            fetchAllBtn.textContent = "Hide All Mechanics";
+        })
+        .catch(err => {
+            alert("Error fetching mechanics: " + err);
+        });
+    } else {
+        allTableDiv.style.display = "none";
+        fetchAllBtn.textContent = "Show All Mechanics";
+    }
+});
+
+const fetchAvailableBtn = document.getElementById("fetchAvailableBtn");
+const availableTableDiv = document.getElementById("availableMechanicsTable");
+const availableTbody = document.getElementById("availableMechanicsBody");
+
+fetchAvailableBtn.addEventListener("click", () => {
+    if (availableTableDiv.style.display === "none") {
+        fetch("/getAvailableMechanics")
+        .then(res => res.json())
+        .then(data => {
+            availableTbody.innerHTML = "";
+            data.forEach(m => {
+                let imgSrc = 'data:image/jpeg;base64,' + m.photoBase64;
+                availableTbody.innerHTML += `
+                    <tr>
+                        <td>${m.id}</td>
+                        <td>${m.name}</td>
+                        <td>${m.phone}</td>
+                        <td>${m.status}</td>
+                        <td>
+                            <a href="${imgSrc}" download="mechanic_${m.id}.jpg">
+                                <img src="${imgSrc}" alt="Photo" style="width: 80px; height: auto; cursor: pointer;" />
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            });
+            availableTableDiv.style.display = "block";
+            fetchAvailableBtn.textContent = "Hide Available Mechanics";
+        })
+        .catch(err => {
+            alert("Error fetching available mechanics: " + err);
+        });
+    } else {
+        availableTableDiv.style.display = "none";
+        fetchAvailableBtn.textContent = "Show Available Mechanics";
+    }
+});
+
+const searchForm = document.getElementById("searchForm");
+const searchResultDiv = document.getElementById("searchResult");
+
+searchForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const id = this.querySelector('input[name="id"]').value;
+
+    fetch(`/searchById?id=${id}`)
+        .then(response => response.json())
+        .then(mechanic => {
+            if(mechanic && mechanic.id) {
+                let imgSrc = 'data:image/jpeg;base64,' + mechanic.photoBase64;
+                searchResultDiv.innerHTML = `
+                    <h5>Search Result:</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th><th>Name</th><th>Phone</th><th>Status</th><th>Photo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${mechanic.id}</td>
+                                <td>${mechanic.name}</td>
+                                <td>${mechanic.phone}</td>
+                                <td>${mechanic.status}</td>
+                                <td>
+                                    <a href="${imgSrc}" download="mechanic_${mechanic.id}.jpg">
+                                        <img src="${imgSrc}" alt="Photo" style="width: 80px; height: auto; cursor: pointer;" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                searchResultDiv.innerHTML = `<p>No mechanic found with ID ${id}</p>`;
+            }
+        })
+        .catch(err => {
+            searchResultDiv.innerHTML = `<p>Error fetching mechanic data: ${err}</p>`;
+        });
+});
+</script>
+
+</body>
+</html>

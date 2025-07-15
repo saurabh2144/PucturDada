@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mechanic Login</title>
+     <link rel="stylesheet" href="/css/MechanicLogin.css">
+   
+    	 <script src="https://cdn.tailwindcss.com"></script>
+    	   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+	
+	<!-- yaha header wala sara system hai nav bar wagira -->
+   <div th:replace="header :: header"></div>
+    <div style="margin-top:100px; display:flex; justify-content:center;">
+      
+        
+        <form th:action="@{/loginmec}" method="post" th:object="${login}">
+          <h1 style="height:20px;  font-weight:800">Mechanic Login</h1>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required />
+
+            <button style="background-color:black; color:white; padding:8px"type="submit">Login</button>
+			<p style="color:black">Are You New?</p>
+            <button type="button" class="register-button" onclick="window.location.href='/addMechanic';"> Register Here</button>
+        </form>
+       
+        <p th:if="${error}" th:text="${error}"></p> <!-- Show error message if login fails -->
+    </div>
+    		
+<!-- footer yaha se shuru hai -->
+<div th:replace="footer :: footer"></div>
+
+		
+  
+</body>
+</html>

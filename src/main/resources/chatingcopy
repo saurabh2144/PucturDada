@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Chat - Saurabh</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+    <h2>Saurabh's Chat (Always in English)</h2>
+    <input type="text" id="message" placeholder="Type message" />
+    <button onclick="sendMessage()">Send</button>
+
+    <ul id="messages"></ul>
+
+    <script>
+        var stompClient = null;
+        var isSubscribed = false;
+
+        function connect() {
+            var socket = new SockJS('/google');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function(msg) {
+                    let message = JSON.parse(msg.body);
+                    showMessage(message);
+                });
+                isSubscribed = true;
+            });
+        }
+
+        function sendMessage() {
+            if (!isSubscribed) {
+                alert("Still connecting to server, please wait...");
+                return;
+            }
+
+            var content = document.getElementById('message').value.trim();
+            if (content === '') {
+                alert("Message cannot be empty!");
+                return;
+            }
+
+            var messageObj = {
+                sender: "Saurabh",
+                receiver: "Mohit",
+                content: content
+            };
+            stompClient.send("/app/send", {}, JSON.stringify(messageObj));
+            document.getElementById('message').value = '';
+        }
+
+        function showMessage(message) {
+            let messagesList = document.getElementById('messages');
+            messagesList.innerHTML += `<li><b>${message.sender}:</b> ${message.content}</li>`;
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+
+        connect();
+    </script>
+</body>
+</html>

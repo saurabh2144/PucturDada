@@ -1,0 +1,375 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+#chat-container {
+	display:none ;
+}
+
+#chat{
+	display:none;
+}
+
+/* Header */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    font-weight: bold;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    /* flex-direction: row; default, so logo image and text side by side */
+    gap: 10px;
+}
+
+header .logo img {
+    width: 138px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar .main-btnn {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.navbar .main-btnn:hover {
+    background-color: #444;
+}
+
+
+/* Main */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px; /* Because header is 100px */
+    background-color: #f7f7f7;
+    /* min-height: 100vh;  ❌ Remove this */
+    min-height: calc(100vh - 100px - 60px); /* 100px header + ~60px footer */
+}
+
+
+/* Left */
+.content {
+    flex: 1;
+    padding: 2rem;
+    text-align: left;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#random {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: black;
+    max-width: 400px;
+}
+
+/* Pay Now Button */
+#payNowBtn {
+    display: block;
+    width: 250px;
+    height: 50px;
+    margin: 20px 10px;
+    margin-left:118px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+#payNowBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Map */
+.map-placeholder {
+    flex: 1;
+    height: 80vh;
+    border-radius: 8px;
+    margin-right: 50px;
+    background-color: #e0e0e0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 0; /* Make sure it's below header */
+}
+
+/* Payment Success Box */
+#ppp {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid green;
+    background: #eaffea;
+    margin: 20px auto;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left:30px;
+}
+
+#ppp h3 {
+    color: green;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#ppp p {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.route-info {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Ok Button */
+#okBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    height: 50px;
+}
+
+#okBtn:hover {
+    background-color: #218838;
+}
+
+/* WhatsApp Message Button */
+#messageBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366; /* WhatsApp green */
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    width: 200px;
+    height: 50px;
+    gap: 10px;
+}
+
+#messageBox img {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+#messageBox span {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#messageBox:hover {
+    background-color: #1DA851;
+} 
+
+
+
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+
+
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main .content {
+        text-align: center;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    /* Keep logo side by side on mobile */
+    header .logo {
+        flex-direction: row;  /* keep horizontal */
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+        justify-content: flex-start;
+    }
+
+    header .logo img {
+        width: 100px; /* smaller logo */
+        height: auto;
+        margin-right: 5px;
+    }
+
+    header .logo span {
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+ 

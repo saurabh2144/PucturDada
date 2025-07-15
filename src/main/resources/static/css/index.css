@@ -1,0 +1,485 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    font-weight: bold;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    /* flex-direction: row; default, so logo image and text side by side */
+    gap: 10px;
+}
+
+header .logo img {
+    width: 138px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar .main-btnn {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.navbar .main-btnn:hover {
+    background-color: #444;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+
+/* Main Section */
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 80px;
+    background-color: #f7f7f7;
+}
+
+.main .content {
+    flex: 1;
+    padding: 2rem;
+    text-align: left;
+}
+
+.main .content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.main .content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.slideshow-container {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    position: relative;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Book a Ride Button */
+.main-btn {
+    background-color: #007BFF; /* Blue background */
+    color: #fff;
+    padding: 1rem 2rem; /* Padding around text */
+    font-size: 1.1rem;
+    border-radius: 50px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover */
+    display: inline-block;
+    text-decoration: none;
+}
+
+.main-btn:hover {
+    background-color: #0056b3; /* Darker blue when hovered */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.main-btn:active {
+    background-color: #003f7d; /* Even darker blue when clicked */
+    transform: scale(1); /* Reset zoom when clicked */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main .content {
+        text-align: center;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    /* Keep logo side by side on mobile */
+    header .logo {
+        flex-direction: row;  /* keep horizontal */
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+        justify-content: flex-start;
+    }
+
+    header .logo img {
+        width: 100px; /* smaller logo */
+        height: auto;
+        margin-right: 5px;
+    }
+
+    header .logo span {
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    font-weight: bold;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    /* flex-direction: row; default, so logo image and text side by side */
+    gap: 10px;
+}
+
+header .logo img {
+    width: 138px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar .main-btnn {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.navbar .main-btnn:hover {
+    background-color: #444;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    margin-right:10px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+
+/* Main Section */
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 80px;
+    background-color: #f7f7f7;
+}
+
+.main .content {
+    flex: 1;
+    padding: 2rem;
+    text-align: left;
+}
+
+.main .content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.main .content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.slideshow-container {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    position: relative;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Book a Ride Button */
+.main-btn {
+    background-color: #007BFF; /* Blue background */
+    color: #fff;
+    padding: 1rem 2rem; /* Padding around text */
+    font-size: 1.1rem;
+    border-radius: 50px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover */
+    display: inline-block;
+    text-decoration: none;
+}
+
+.main-btn:hover {
+    background-color: #0056b3; /* Darker blue when hovered */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.main-btn:active {
+    background-color: #003f7d; /* Even darker blue when clicked */
+    transform: scale(1); /* Reset zoom when clicked */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main .content {
+        text-align: center;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    /* Keep logo side by side on mobile */
+    header .logo {
+        flex-direction: row;  /* keep horizontal */
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+        justify-content: flex-start;
+    }
+
+    header .logo img {
+        width: 100px; /* smaller logo */
+        height: auto;
+        margin-right: 5px;
+    }
+
+    header .logo span {
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}

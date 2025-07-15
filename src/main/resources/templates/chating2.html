@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mechanic Chat - Mohit</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+       
+
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+
+        #messages {
+            flex: 1;
+            padding: 10px;
+            margin: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            max-width: 75%;
+            margin: 6px 0;
+            padding: 10px 14px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            display: inline-block;
+        }
+
+        .user {
+            align-self: flex-start;
+            background-color: #dcf8c6;
+            text-align: left;
+        }
+
+        .mechanic {
+            align-self: flex-end;
+            background-color: #d1e7ff;
+            text-align: right;
+        }
+
+        #input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        #message {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #128c7e;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0f7b6e;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body >
+    <div id="chat2" >
+    <div id="chat-container" >
+        <div id="messages"></div>
+        <div id="input-area">
+            <input type="text" id="message" placeholder="Type message" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div></div>
+
+    <script>
+        var stompClient = null;
+        var isSubscribed = false;
+
+        function connect() {
+            var socket = new SockJS('/google');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function(msg) {
+                    let message = JSON.parse(msg.body);
+                    handleIncomingMessage(message);
+                });
+                isSubscribed = true;
+
+                fetch("/reset-language", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: "mechanicName=Mohit"
+                });
+            });
+        }
+
+        function handleIncomingMessage(message) {
+            if (message.sender.toLowerCase() === 'mohit') {
+                console.log("Ignoring mechanic's own translated message from server.");
+                return;
+            }
+
+            if (message.sender.toLowerCase() === 'saurabh') {
+                showMessage(message, 'user');
+            }
+        }
+
+        function sendMessage() {
+            if (!isSubscribed) {
+                alert("Still connecting to server, please wait...");
+                return;
+            }
+
+            var content = document.getElementById('message').value.trim();
+            if (content === '') {
+                alert("Message cannot be empty!");
+                return;
+            }
+
+            var messageObj = {
+                sender: "Mohit",
+                receiver: "Saurabh",
+                content: content
+            };
+
+            showMessage(messageObj, 'mechanic');
+
+            stompClient.send("/app/send", {}, JSON.stringify(messageObj));
+            document.getElementById('message').value = '';
+        }
+
+        function showMessage(message, type) {
+            let messagesDiv = document.getElementById('messages');
+            let div = document.createElement("div");
+            div.className = `message ${type}`;
+            div.innerHTML = `<b>${message.sender}:</b> ${message.content}`;
+            messagesDiv.appendChild(div);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        connect();
+    </script>
+</body>
+</html>

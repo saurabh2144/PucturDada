@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_DaDa</title>
+    <link rel="icon" type="image/png" sizes="180x180" href="/newlogo.png">
+    <link rel="stylesheet" href="/css/index.css">
+     <script src="https://cdn.tailwindcss.com"></script>
+  
+    
+  </head>
+  
+  
+<body class="scroll-smooth ">
+
+   
+   
+   <!-- yaha header wala sara system hai nav bar wagira -->
+   <div th:replace="header :: header"></div>
+   
+   
+   
+   
+   
+   
+    <!-- Main Section -->
+    <section class="main bg-white" >
+        <div class="content">
+            <h1>FAST AND EASY WAY TO GET MECHANIC FOR YOUR VEHICLE</h1>
+            <h2>We Can Fix Everything And Anywhere Any Time</h2>
+            <p>क्या आपकी गाड़ी हो गई है ख़राब और आपको है कोई खास काम मंजिल पर पहुचना है जरूरी मगर आपकी ख़राब गाड़ी है मजबुरी तो अभी हमसे संपर्क करे नीचे दिए गए बटन को दबाए और अपना मैकेनिक पाये जो आपकी मंजिल को कर देगा आसान</p>
+            <button onclick="window.location.href='/show-location'" class="main-btn">Book a Mechanic</button>
+        </div>
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="/newani.png" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="/meme.png" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="/piclumen-1731458410165.png" alt="Slide 3">
+            </div>
+        </div>
+    </section>
+
+
+<!-- footer yaha se shuru hai -->
+<div th:replace="footer :: footer"></div>
+
+
+   
+     
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

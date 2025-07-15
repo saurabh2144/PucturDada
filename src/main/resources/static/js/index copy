@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_DaDa</title>
+    <link rel="icon" type="image/png" sizes="180x180" href="/newlogo.png">
+    <link rel="stylesheet" href="/css/index.css">
+      <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+    
+</head>
+
+
+<body class="scroll-smooth">
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="/vnewlogo.png" alt="Logo">
+            पंचर Đ₳Đ₳<span>: On-Road Help</span>
+        </div>
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="#about-section">About</a>
+            <button class="main-btnn" onclick="window.location.href='/loginmec'">Login As Mechanic</button>
+        </nav>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Mobile Navbar -->
+        <nav class="navbar-mobile" id="mobileMenu">
+            <a href="#">Home</a>
+            <a href="#about-section">About</a>
+            <button class="main-btnn" onclick="window.location.href='/loginmec'">Login As Mechanic</button>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main main bg-white" >
+        <div class="content">
+            <h1>FAST AND EASY WAY TO GET MECHANIC FOR YOUR VEHICLE</h1>
+            <h2>We Can Fix Everything And Anywhere Any Time</h2>
+            <p>क्या आपकी गाड़ी हो गई है ख़राब और आपको है कोई खास काम मंजिल पर पहुचना है जरूरी मगर आपकी ख़राब गाड़ी है मजबुरी तो अभी हमसे संपर्क करे नीचे दिए गए बटन को दबाए और अपना मैकेनिक पाये जो आपकी मंजिल को कर देगा आसान</p>
+            <button onclick="window.location.href='/show-location'" class="main-btn">Book a Mechanic</button>
+        </div>
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="/newani.png" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="/meme.png" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="/piclumen-1731458410165.png" alt="Slide 3">
+            </div>
+        </div>
+    </section>
+
+
+<footer id="about-section" class="bg-gray-100 text-gray-800 py-10 mt-20 border-t border-gray-300">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0">
+     
+     
+     <!-- Company Info -->
+    <div class="max-w-md text-center md:text-left flex items-center space-x-4">
+ 
+  <div>
+    
+    <h3 class="text-2xl font-bold mb-3">   <img src="/vnewlogo.png" alt="Logo" class="w-16 h-19 object-contain" /> पंचर Đ₳Đ₳ :On-Road Help   </h3>
+    <p class="mb-3 text-gray-700">
+      Your trusted partner for on-road vehicle repairs and maintenance. 
+      We specialize in quick and reliable mechanic services right where you need them.<br><br>
+      Expert car servicing with fully equipped workshop on wheels and certified mechanics. Service executed as per manufacturer's guidelines and using genuine spare parts only.
+    </p>
+    <p class="mb-3 text-gray-700">
+      <strong>Our Values:</strong> Reliability, Affordability, Transparency, and Customer Satisfaction.
+    </p>
+    <p class="mb-3 text-gray-700 italic">
+      “Driving peace of mind, one repair at a time.”
+    </p>
+  </div>
+</div>
+     
+
+    <!-- Contact Info -->
+    <div class="max-w-xs text-center md:text-left">
+      <h4 class="font-semibold text-lg mb-4">Contact Us</h4>
+      <p class="mb-2 text-gray-800">Phone: <a href="tel:+911234567890" class="text-blue-600 hover:underline">+91 12345 67890</a></p>
+      <p class="mb-2 text-gray-800">Email: <a href="mailto:support@puncturedada.com" class="text-blue-600 hover:underline">support@puncturedada.com</a></p>
+      <p class="text-gray-600 text-sm">Available 24/7 for your emergencies and scheduled bookings.</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="text-center md:text-left">
+      <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+      <div class="flex justify-center md:justify-start space-x-6 text-2xl text-gray-600">
+        <a href="https://facebook.com/puncturedada" target="_blank" class="hover:text-blue-600" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/puncturedada" target="_blank" class="hover:text-blue-400" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/puncturedada" target="_blank" class="hover:text-pink-500" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center text-sm text-gray-500">
+    © <script>document.write(new Date().getFullYear());</script> Puncture Đ₳Đ₳. All rights reserved.
+  </div>
+</footer>
+
+
+   
+    <!-- JS -->
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+    </script>
+</body>
+
+</html>

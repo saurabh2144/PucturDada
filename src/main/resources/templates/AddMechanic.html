@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Location</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/mechanicregis.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+   <!-- yaha header wala sara system hai nav bar wagira -->
+   <div th:replace="header :: header"></div>
+
+<div class="container">
+
+    <div class="form-section">
+        <h2>Select Mechanic Location</h2>
+      
+
+        <form action="/addMechanic" method="post" enctype="multipart/form-data">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Phone:</label>
+            <input type="text" name="phone" pattern="\d{10}" required>
+
+            <label>Latitude:</label>
+            <input type="text" id="latitude" name="latitude" readonly required>
+
+            <label>Longitude:</label>
+            <input type="text" id="longitude" name="longitude" readonly required>
+
+            <label>Password:</label>
+            <input type="text" name="password" required>
+            
+            <label>AadharCard Photo:</label>
+    <input type="file" name="file" accept="image/*" required><br><br> 
+
+            <input type="hidden" name="status" value="busy"><br>
+
+            <button type="submit">Add Mechanic</button>
+        </form>
+    </div>
+
+    <div class="map-section">
+        <div id="map"></div>
+          <button id="getLocationBtn" onclick="getLocation()">Get My Current Location</button>
+    </div>
+
+</div>
+
+
+
+<!-- footer yaha se shuru hai -->
+<div th:replace="footer :: footer"></div>
+
+
+<!-- Your existing JS here -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    let map = L.map('map').setView([26.85, 80.95], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    let marker;
+
+    map.on('click', function(e) {
+        const lat = e.latlng.lat.toFixed(6);
+        const lng = e.latlng.lng.toFixed(6);
+
+        if (marker) {
+            marker.setLatLng(e.latlng);
+        } else {
+            marker = L.marker(e.latlng).addTo(map);
+        }
+
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+    });
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                map.setView([lat, lng], 15);
+
+                if (marker) {
+                    marker.setLatLng([lat, lng]);
+                } else {
+                    marker = L.marker([lat, lng]).addTo(map);
+                }
+
+                document.getElementById('latitude').value = lat;
+                document.getElementById('longitude').value = lng;
+            }, function() {
+                alert("Location access denied.");
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+</script>
+
+</body>
+
+</html>

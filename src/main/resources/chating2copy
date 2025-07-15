@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mechanic Chat - Mohit</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+    <h2>Mohit's Chat (Mechanic)</h2>
+    <input type="text" id="message" placeholder="Type message" />
+    <button onclick="sendMessage()">Send</button>
+
+    <ul id="messages"></ul>
+
+    <script>
+        var stompClient = null;
+        var isSubscribed = false;
+
+        function connect() {
+            var socket = new SockJS('/google');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function(msg) {
+                    let message = JSON.parse(msg.body);
+                    handleIncomingMessage(message);
+                }, function(error) {
+                    console.error('Subscription error:', error);
+                });
+                isSubscribed = true;
+                console.log('Subscribed to /topic/messages');
+            }, function(error) {
+                console.error('STOMP connection error:', error);
+            });
+        }
+
+        function handleIncomingMessage(message) {
+            // Agar sender mechanic hai (Mohit), toh ignore karo server se aaya hua translated message
+            if (message.sender.toLowerCase() === 'mohit') {
+                console.log("Ignoring mechanic's own translated message from server.");
+                return;
+            }
+
+            // Agar sender user hai (Saurabh), toh user ka message dikhao (jo backend se translated mechanic ki language me aata hai)
+            if (message.sender.toLowerCase() === 'saurabh') {
+                showMessage(message);
+            }
+        }
+
+        function sendMessage() {
+            if (!isSubscribed) {
+                alert("Still connecting to server, please wait...");
+                return;
+            }
+
+            var content = document.getElementById('message').value.trim();
+            if (content === '') {
+                alert("Message cannot be empty!");
+                return;
+            }
+
+            var messageObj = {
+                sender: "Mohit",
+                receiver: "Saurabh",
+                content: content
+            };
+
+            // Apna original message frontend pe turant show karo
+            showLocalMessage(messageObj);
+
+            // Server ko bhejo
+            stompClient.send("/app/send", {}, JSON.stringify(messageObj));
+            document.getElementById('message').value = '';
+        }
+
+        function showLocalMessage(message) {
+            let messagesList = document.getElementById('messages');
+            messagesList.innerHTML += `<li><b>${message.sender}:</b> ${message.content}</li>`;
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+
+        function showMessage(message) {
+            let messagesList = document.getElementById('messages');
+            messagesList.innerHTML += `<li><b>${message.sender}:</b> ${message.content}</li>`;
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+
+        connect();
+    </script>
+</body>
+</html>

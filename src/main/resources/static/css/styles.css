@@ -1,0 +1,27 @@
+.button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #007BFF;
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 16px;
+	margin: 20px;
+}
+
+.button:hover {
+	background-color: #0056b3;
+}
+
+#bb {
+
+
+	display: flex;
+	justify-content: center;
+	/* Center horizontally (optional) */
+	align-items: center;
+
+	height: 95px;
+	
+
+}

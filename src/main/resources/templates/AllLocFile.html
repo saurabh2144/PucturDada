@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project_DADA</title>
+	<link rel="icon" type="image/png" sizes="180x180" href="/newlogo.png">
+	<link rel="stylesheet" href="/css/AllLocFile.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	 <script src="https://cdn.tailwindcss.com"></script>
+	
+	
+</head>
+
+<body onload="initMap()">
+	
+	
+	
+	<!-- yaha header wala sara system hai nav bar wagira -->
+   <div th:replace="header :: header"></div>
+	
+	
+	
+	<main>
+		<section class="main">
+			<div class="content">
+				<h1>Your Mechanic, On Demand</h1>
+				<p>All the available mechanics nearby are shown on the map. Click on "Book Mechanic" to get your
+					mechanic.</p>
+				<div class="next">
+					<button id="Btn" class="main-btn" style="margin-left: 160px; text-decoration: none;">BOOK
+						MECHANIC</button>
+				</div>
+			
+				
+			</div>
+			
+			<div id="map" class="map-placeholder"></div>
+		</section>
+		
+	</main>
+	<!-- Loader Overlay -->
+		<div class="loader-overlay">
+			
+			<div class="sear" id="messages">Searching Your Mechanic</div>
+	 <br>
+			<div class="loader-circle"></div>
+		</div>
+		
+		
+<!-- footer yaha se shuru hai -->
+<div th:replace="footer :: footer"></div>
+
+		
+		
+   <script src="/js/AllLocFile.js"></script>
+</body>
+
+</html>

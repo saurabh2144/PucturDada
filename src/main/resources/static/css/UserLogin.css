@@ -1,0 +1,33 @@
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    a[href*="google"] {
+      background-color: #db4437;
+    }
+
+    a[href*="google"]:hover {
+      background-color: #c33d2e;
+    }
+
+    a[href*="facebook"] {
+      background-color: #3b5998;
+    }
+
+    a[href*="facebook"]:hover {
+      background-color: #2d4373;
+    }

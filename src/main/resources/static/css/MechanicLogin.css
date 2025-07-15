@@ -1,0 +1,264 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+
+/* Logo */
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+header .logo img {
+    width: 138px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar .main-btnn {
+   display:none;
+}
+
+.navbar .main-btnn:hover {
+    background-color: #444;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+
+/* Headings */
+h1 {
+    color: #555;
+    text-align: center;
+}
+
+/* Form Styles */
+form {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+    margin-top: 19px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Register Button */
+.register-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.register-button:hover {
+    background-color: #218838;
+}
+
+/* Error Message */
+p {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Main container to push content below navbar */
+main {
+    margin-top: 100px; /* Adjust to height of the header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .main .content,
+    #map {
+        max-width: 100%;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    .main-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 90%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 500px) {
+    form {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+}

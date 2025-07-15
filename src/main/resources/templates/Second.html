@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mechanic Response Messages</title>
+
+  <!-- jQuery & WebSocket -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+  <!-- Leaflet.js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+
+  <link rel="stylesheet" href="/css/MechanicHomePage.css">
+  
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+  
+	<!-- yaha header wala sara system hai nav bar wagira -->
+	<div th:replace="~{header :: header}"></div>
+	
+
+  
+
+  <!-- Popup Overlay -->
+  <div id="popupOverlay"></div>
+
+  <!-- Accept/Reject Popup -->
+  <div id="pp">
+    <p>One request has arrived</p>
+    <button id="acceptBtn">ACCEPT</button>
+    <button id="rejectBtn">REJECT</button>
+  </div>
+
+  <!-- Map and Text Layout -->
+  <div class="map-container">
+  
+  
+    <div class="text-section">
+    <h1>Welcome, <span th:text="${mechanic.name}">Mechanic Name</span>!</h1>
+      <h3>Please wait, someone may require your help. We’ll connect you shortly.</h3>
+      <label class="switch">
+  <input type="checkbox" 
+       th:attr="onchange=|updateStatus(this, '${mechanic.name}')|">
+  
+  <span class="slider round"></span>
+</label>
+
+
+   <br><br>
+ <button id="openChatBtn" onclick="window.open('/chat2', '_blank');">OPEN CHAT</button>
+ 
+ 
+    </div>
+    <div class="map-section">
+      <div id="map"></div>
+    </div>
+  </div>
+        
+   
+    
+   
+	<!-- footer yaha se shuru hai -->
+	<div th:replace="footer :: footer"></div>
+	
+	<script th:inline="javascript">
+    const mechanicName = /*[[${mechanic.name}]]*/ "defaultName";
+</script>
+	
+	
+  <script src="/js/MechanicHomePage.js"></script>
+</body>
+
+</html>

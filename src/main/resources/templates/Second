@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mechanic Response Messages</title>
+
+  <!-- jQuery & WebSocket -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+  <!-- Leaflet.js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+
+  <link rel="stylesheet" href="/css/MechanicHomePage.css">
+  
+
+</head>
+
+<body>
+  <header>Mechanic Home Page</header>
+
+  
+
+  <!-- Popup Overlay -->
+  <div id="popupOverlay"></div>
+
+  <!-- Accept/Reject Popup -->
+  <div id="pp">
+    <p>One request has arrived</p>
+    <button id="acceptBtn">ACCEPT</button>
+    <button id="rejectBtn">REJECT</button>
+  </div>
+
+  <!-- Map and Text Layout -->
+  <div class="map-container">
+    <div class="text-section">
+      <h3>Mechanic is on the way!</h3>
+      <p>Please be ready. You can track the mechanic’s route on the map to the right.</p>
+      <p>Contact the mechanic if needed. Make sure your location is accurate.</p>
+    </div>
+    <div class="map-section">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Mechanic Services</footer>
+  <script src="/js/MechanicHomePage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+#map {
+	height: 500px;
+	width: 80%;
+	border: 2px solid black;
+	margin-left: 130px;
+}
+
+.container {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.route-info {
+	margin-top: 20px;
+}

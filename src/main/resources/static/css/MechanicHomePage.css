@@ -1,0 +1,430 @@
+ body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f8fc;
+      color: #333;
+    
+      padding-top: 80px; /* Adjust according to your header height */
+}
+main {
+  padding-top: 80px;
+}
+
+/* Header */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    font-weight: bold;
+    margin-top:-80px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    /* flex-direction: row; default, so logo image and text side by side */
+    gap: 10px;
+}
+
+header .logo img {
+    width: 138px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+header .logo span {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar .main-btnn {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.navbar .main-btnn:hover {
+    background-color: #444;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+/* Mobile Navbar */
+.navbar-mobile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.navbar-mobile a {
+    margin-bottom: 1rem;
+}
+
+.navbar-mobile a:hover {
+    color: #000;
+}
+
+.navbar-mobile.show {
+    display: flex;
+}
+   
+
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+    }
+
+    #pp {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      display: none;
+      z-index: 1000;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    #pp p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #acceptBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #acceptBtn:hover {
+      background-color: #45a049;
+    }
+
+    #rejectBtn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #rejectBtn:hover {
+      background-color: #e53935;
+    }
+
+    .map-container {
+      display: none;
+      margin: 20px auto;
+      max-width: 95%;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      margin-top:80px;
+    }
+    
+
+    .text-section {
+      width: 40%;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #555;
+    }
+    
+    .text-section h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2.8rem;         /* Large and prominent */
+  font-weight: 700;          /* Bold */
+  color: #1f2937;            /* Dark slate gray, easy on the eyes */
+  text-shadow: 1px 1px 3px rgba(31, 41, 55, 0.3); /* subtle shadow */
+  margin-bottom: 0.5rem;     /* spacing below */
+  letter-spacing: 1.2px;     /* slight letter spacing for clarity */
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.text-section h1:hover {
+  color: #2563eb;            /* Tailwind’s blue-600 on hover */
+  cursor: default;
+}
+
+h3 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8rem;          /* Clear and prominent */
+  font-weight: 600;           /* Semi-bold */
+  color: #1f2937;             /* Dark slate gray, matches your h1 color */
+  margin-bottom: 1rem;        /* Space below */
+  letter-spacing: 0.8px;      /* Slight letter spacing for clarity */
+  text-shadow: 0 1px 2px rgba(31, 41, 55, 0.2);  /* subtle shadow */
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+h3:hover {
+  color: #2563eb;             /* Tailwind blue-600 on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+    
+
+    .map-section {
+      width: 60%;
+      height: 500px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f1f1f1;
+      margin-top: 20px;
+    }
+    
+    
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main .content {
+        text-align: center;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    /* Keep logo side by side on mobile */
+    header .logo {
+        flex-direction: row;  /* keep horizontal */
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+        justify-content: flex-start;
+    }
+
+    header .logo img {
+        width: 100px; /* smaller logo */
+        height: auto;
+        margin-right: 5px;
+    }
+
+    header .logo span {
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-mobile.show {
+        display: flex;
+    }
+
+    .main .content {
+        text-align: center;
+    }
+
+    .main .content h1 {
+        font-size: 2rem;
+    }
+
+    .main .content p {
+        font-size: 1rem;
+    }
+
+    /* Keep logo side by side on mobile */
+    header .logo {
+        flex-direction: row;  /* keep horizontal */
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+        justify-content: flex-start;
+    }
+
+    header .logo img {
+        width: 100px; /* smaller logo */
+        height: auto;
+        margin-right: 5px;
+    }
+
+    header .logo span {
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+#openChatBtn {
+  margin: 8px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+#openChatBtn:hover {
+  background-color: #0056b3;
+}
+

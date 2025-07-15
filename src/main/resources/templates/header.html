@@ -1,0 +1,39 @@
+<!-- fragments/navbar.html -->
+
+
+<header th:fragment="header">
+
+
+  <!-- CSS aur JS links jo sirf navbar ke liye hain -->
+ 
+ 
+  <script th:src="@{/js/navbar.js}"></script>
+  
+    <div class="logo">
+            <img src="/vnewlogo.png" alt="Logo">
+            पंचर Đ₳Đ₳<span>: On-Road Help</span>
+        </div>
+
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="#footer">About</a>
+    <button class="main-btnn" onclick="window.location.href='/loginmec'">Login As Mechanic</button>
+  </nav>
+
+  <!-- Mobile menu aur hamburger yahan -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav class="navbar-mobile" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="#about-section">About</a>
+    <button class="main-btnn" onclick="window.location.href='/loginmec'">Login As Mechanic</button>
+  </nav>
+  
+
+  
+  
+</header>
